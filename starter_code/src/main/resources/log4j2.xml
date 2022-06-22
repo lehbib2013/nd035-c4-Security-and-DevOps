@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" monitorInterval="30">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n"/>
+        </Console>
+
+        <File name="MyFile" fileName="logs.log" immediateFlush="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n"/>
+        </File>
+        <SplunkHttp
+                name="splunkdemo"
+                url="http://localhost:8000"
+                token="562bff05-58c0-4aec-9262-65d3c330531b"
+                index="spring_dev"
+                disableCertificateValidation="true"
+        >
+            <PatternLayout pattern="%m"/>
+        </SplunkHttp>
+ </appenders>
+    <loggers>
+        <logger  name="com.example.demo" additivity="true"  level="debug">
+            <appender-ref ref="MyFile"/>
+            <AppenderRef ref="splunkdemo"/>
+
+        </logger>
+        <root level="INFO">
+            <AppenderRef ref="splunkdemo"/>
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+</configuration>

@@ -1,0 +1,58 @@
+# Define the root logger with appender file
+#log4j.rootLogger = DEBUG, FILE
+
+# Define the file appender
+#log4j.appender.FILE=org.apache.log4j.FileAppender
+
+# Set the name of the file
+#log4j.appender.FILE.File=log.out
+
+# Set the immediate flush to true (default)
+#log4j.appender.FILE.ImmediateFlush=true
+
+# Set the threshold to debug mode
+#log4j.appender.FILE.Threshold=debug
+
+# Set the append to false, overwrite
+#log4j.appender.FILE.Append=false
+
+# Define the layout for file appender
+#log4j.appender.FILE.layout=org.apache.log4j.PatternLayout
+#log4j.appender.FILE.layout.conversionPattern=%m%n
+
+
+name = PropertiesConfig
+log4j.rootLogger=debug, stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+appender.rolling.type = RollingFile
+appender.rolling.name = RollingFile
+appender.rolling.fileName = application.log
+appender.rolling.filePattern = application.%d{dd-MMM}.log.gz
+appender.rolling.layout.type = PatternLayout
+appender.rolling.layout.pattern = %d{yyyy-MM-dd HH:mm:ss} %-5p %m%n
+appender.rolling.policies.type = Policies
+appender.rolling.policies.size.type = SizeBasedTriggeringPolicy
+appender.rolling.policies.size.size=10MB
+appender.rolling.strategy.type = DefaultRolloverStrategy
+appender.rolling.strategy.max = 5
+appender.rolling.strategy.action.type = Delete
+appender.rolling.strategy.action.basepath = ${LOG_DIR}
+appender.rolling.strategy.action.maxdepth = 2
+appender.rolling.strategy.action.condition.type = IfLastModified
+appender.rolling.strategy.action.condition.age = 30D
+appender.rolling.strategy.action.PathConditions.type = IfFileName
+appender.rolling.strategy.action.PathConditions.glob = */app-*.log.gz
+appender.rolling.filter.threshold.type = ThresholdFilter
+appender.rolling.filter.threshold.level = INFO
+
+
+appender.console.type = Console
+appender.console.name = STDOUT
+appender.console.layout.type = PatternLayout
+appender.console.layout.pattern = [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+
+logger.rolling.name = rollingFile
+logger.rolling.level =INFO
+logger.rolling.additivity = false
+logger.rolling.appenderRef.rolling.ref = RollingFile
+
