@@ -5,9 +5,21 @@
             <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n"/>
         </Console>
 
-        <File name="MyFile" fileName="logs.log" immediateFlush="true">
-            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n"/>
-        </File>
+
+        <RollingFile name="roll-by-time"
+                     fileName="target/log4j2/roll-by-time/logs.log"
+                     filePattern="target/log4j2/roll-by-time/app.%d{MM-dd-yyyy-HH-mm}.log.gz"
+                     ignoreExceptions="false">
+
+            <PatternLayout>
+                <Pattern>"%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 KB" />
+            </Policies>
+        </RollingFile>
         <SplunkHttp
                 name="splunkdemo"
                 url="http://localhost:8000"
@@ -19,8 +31,8 @@
         </SplunkHttp>
  </appenders>
     <loggers>
-        <logger  name="com.example.demo" additivity="true"  level="debug">
-            <appender-ref ref="MyFile"/>
+        <logger  name="com.example.demo" additivity="true" >
+            <appender-ref ref="roll-by-time"/>
             <AppenderRef ref="splunkdemo"/>
 
         </logger>

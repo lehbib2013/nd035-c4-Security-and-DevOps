@@ -66,7 +66,7 @@ public class UserController {
 		    logger.info("Users: processing  profile user finding for currenly loggedIn: {}", currentLoggedIn.getName());
 			ResponseEntity<UserProfile> retUserProfile = !(currentLoggedIn instanceof AnonymousAuthenticationToken) ?  ResponseEntity.ok(user.getProfile()) :ResponseEntity.notFound().build();
 			if(retUserProfile!=null) logger.info("Users: Success returning founded user profile : {}", user.getUsername());
-			else logger.info("Users: Failed returning user profile");
+			else logger.info("Exceptions: Failed returning user profile");
 			return retUserProfile;
 	}
 	@GetMapping("/cartDetails")
@@ -75,7 +75,7 @@ public class UserController {
 		logger.info("Users: processing  profile user finding for currenly loggedIn user: {}", currentLoggedIn.getName());
 		ResponseEntity<Cart> retCart = !(currentLoggedIn instanceof AnonymousAuthenticationToken) ?  ResponseEntity.ok(user.getCart()) :ResponseEntity.notFound().build();
 		if(retCart!=null) logger.info("Users: Success returning cart details : {}", currentLoggedIn.getName());
-		else logger.info("Users: Failed returning cart details currenly loggedIn user: {}",currentLoggedIn.getName());
+		else logger.info("Exceptions: Failed returning cart details, there  a logging issue");
 		return retCart;
 
 	}
@@ -95,7 +95,7 @@ public class UserController {
 		cartRepository.save(cart);
 		user.setCart(cart);
 		if(createUserRequest.getPassword().length()<7 || !createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())){
-		    logger.info("Users: Failed creating a  user :{}",createUserRequest.getUsername());
+		    logger.info("Exception: Failed creating a  user, the password is less than 7 length or password don't match ");
             return ResponseEntity.badRequest().build();
 		}
 		// Create a hash for a password
@@ -104,7 +104,7 @@ public class UserController {
 	    //user.setSalt(salt);
 		userRepository.save(user);
 
-		logger.info("users: Success creating user {}: "+ createUserRequest.getUsername());
+		logger.info("Users: Success creating user {}: "+ createUserRequest.getUsername());
 
 		return ResponseEntity.ok(user);
 	}
