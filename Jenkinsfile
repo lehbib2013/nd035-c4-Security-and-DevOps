@@ -1,32 +1,32 @@
 
 pipeline {
-    agent: any
-    stages : {
+    agent any
+    stages  {
            stage('Build') {
-             steps: {
+             steps {
                 echo "build"
              }
            }
            stage('Test') {
-             steps: {
+             steps {
                 echo "Test"
                     }
                    }
             stage('Integration test') {
-             steps: {
+             steps {
                   echo "Integration Test"
                     }
                    }
     }
     post {
-            always : {
+            always  {
                  echo "I am awsome , I run always"
             }
-            Success: {
+            success {
                  echo "I run when you are successful"
 
             }
-            Failure: {
+            failure {
                 echo "I run when you fail"
             }
             }
