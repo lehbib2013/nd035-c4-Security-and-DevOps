@@ -8,20 +8,36 @@ pipeline {
         PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
     }
     stages  {
-           stage('Build') {
+           stage('Checkout') {
              steps {
                 sh 'mvn --version'
-                echo "build"
+                sh 'docker version'
+                echo 'Build'
+                echo "PATH - $PATH "
+                echo "Build Number - $env.BUILD_Number"
+                echo "Build ID - $env.BUILD_ID"
+                echo "Job Name - $env.JOB_NAME"
+                echo "Job ID - $env.JOB_ID"
+                echo "Build TAG - $env.BUILD_TAG"
+                echo "Build URL - $env.BUILD_URL"
              }
            }
+           stage('Compile') {
+                        steps {
+                          sh "mvn clean compile"
+                        }
+                      }
+
            stage('Test') {
              steps {
                 echo "Test"
+                 sh "mvn test"
                     }
                    }
             stage('Integration test') {
-             steps {
-                  echo "Integration Test"
+            steps {
+                    echo "Integration Test"
+                    sh "mvn failsafe:integration-test failsafe:verify"
                     }
                    }
     }
