@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import com.example.demo.TestUtils;
 import com.example.demo.model.persistence.Item;
-import com.example.demo.model.persistence.User;
 import com.example.demo.model.persistence.repositories.ItemRepository;
 
 import org.junit.Before;

@@ -7,6 +7,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+//@RunWith(Suite.class)
+//@Suite.SuiteClasses({
+	//	com.example.demotest.controllers.UserControllerTest.class,
+	//	})
+//@Suite.SuiteClasses({CartControllerTest.class, ItemControllerTest.class, OrderControllerTest.class, UserControllerTest.class})
 public class SareetaApplicationTests {
 
 	@Test

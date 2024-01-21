@@ -1,0 +1,46 @@
+
+pipeline {
+   //   agent any
+    agent { docker { image 'maven:3.6.3' } }
+    environment {
+        dockerHome = tool 'myDocker'
+        mavenHome = tool 'myMaven'
+        PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+        ARG JENKINS_HOME_USER_ID
+        ARG JENKINS_HOME_GROUP_ID
+
+
+    }
+    stages  {
+           stage('Checkout') {
+             steps {
+                 git 'https://github.com/lehbib2013/nd035-c4-Security-and-DevOps.git'
+             }
+           }
+           stage('Compile') {
+                        steps {
+
+                        }
+                      }
+
+           stage('Test') {
+             steps {
+
+                    }
+                   }
+
+    }
+    post {
+            always  {
+                 echo "I am awsome , I run always"
+            }
+            success {
+                 echo "I run when you are successful"
+
+            }
+            failure {
+                echo "I run when you fail"
+            }
+            }
+
+}
