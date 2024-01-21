@@ -6,6 +6,11 @@ pipeline {
         dockerHome = tool 'myDocker'
         mavenHome = tool 'myMaven'
         PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+        ARG JENKINS_HOME_USER_ID
+        ARG JENKINS_HOME_GROUP_ID
+
+        RUN groupadd -g $JENKINS_HOME_GROUP_ID jenkins && \
+            useradd -m jenkins -u $JENKINS_HOME_USER_ID -g $JENKINS_HOME_GROUP_ID
     }
     stages  {
            stage('Checkout') {
