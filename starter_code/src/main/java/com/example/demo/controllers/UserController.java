@@ -1,9 +1,5 @@
 package com.example.demo.controllers;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.Optional;
 
 import com.example.demo.model.persistence.UserProfile;
 
@@ -11,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,10 +20,6 @@ import com.example.demo.model.persistence.repositories.CartRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.CreateUserRequest;
 
-import javax.servlet.http.HttpServletRequest;
-
-import static com.example.demo.utils.Utils.createSalt;
-import static com.example.demo.utils.Utils.get_SecurePassword;
 
 //@Slf4j
 @RestController

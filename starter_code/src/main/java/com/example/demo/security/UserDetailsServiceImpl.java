@@ -1,8 +1,6 @@
 package com.example.demo.security;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+
 import java.util.Collections;
 
 import org.slf4j.Logger;
@@ -17,7 +15,7 @@ import com.example.demo.model.persistence.User;
 import com.example.demo.model.persistence.repositories.UserRepository;
 
 import javax.persistence.EntityNotFoundException;
-import javax.swing.*;
+
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
