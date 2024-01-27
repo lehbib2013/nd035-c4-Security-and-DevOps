@@ -9,13 +9,13 @@ import org.springframework.context.annotation.Bean;
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @EnableJpaRepositories("com.example.demo.model.persistence.repositories")
 @EntityScan("com.example.demo.model.persistence")
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 
-public class SareetaApplication {
+public class SareetaApplication  extends SpringBootServletInitializer {
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder(){
 		return new BCryptPasswordEncoder();
