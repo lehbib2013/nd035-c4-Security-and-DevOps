@@ -15,7 +15,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @EntityScan("com.example.demo.model.persistence")
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 
-public class SareetaApplication  extends SpringBootServletInitializer {
+public class SareetaApplication  /* extends SpringBootServletInitializer */{
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder(){
 		return new BCryptPasswordEncoder();
