@@ -1,3 +1,11 @@
-"2024-01-28T20:44:46.029+0000 INFO Starting SareetaApplication on PC-WIND with PID 13716 (C:\udacity\nd035-c4-Security-and-DevOps\starter_code\target\classes started by devex in C:\udacity\nd035-c4-Security-and-DevOps)
-"2024-01-28T20:44:46.033+0000 INFO No active profile set, falling back to default profiles: default
-"2024-01-28T20:44:48.762+0000 INFO Started SareetaApplication in 2.942 seconds (JVM running for 8.675)
+"2024-01-28T21:04:21.517+0000 INFO Starting SareetaApplication on PC-WIND with PID 13364 (C:\udacity\nd035-c4-Security-and-DevOps\starter_code\target\classes started by devex in C:\udacity\nd035-c4-Security-and-DevOps)
+"2024-01-28T21:04:21.522+0000 INFO No active profile set, falling back to default profiles: default
+"2024-01-28T21:04:24.405+0000 INFO Started SareetaApplication in 3.19 seconds (JVM running for 4.32)
+"2024-01-28T21:04:37.927+0000 INFO Users: processing  creating user: sareeta1
+"2024-01-28T21:04:38.063+0000 INFO Users: Success creating user {}: sareeta1
+"2024-01-28T21:04:47.404+0000 INFO Users: processing  creating user: sareeta12
+"2024-01-28T21:04:47.500+0000 INFO Users: Success creating user {}: sareeta12
+"2024-01-28T21:07:03.982+0000 INFO Orders: processing  order submitting for user: sareeta1
+"2024-01-28T21:07:03.989+0000 INFO Orders: success  order submitting for user: sareeta1
+"2024-01-28T21:07:36.472+0000 INFO Orders: processing  order submitting for user: sareeta1
+"2024-01-28T21:07:36.478+0000 INFO Orders: success  order submitting for user: sareeta1
